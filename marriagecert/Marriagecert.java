@@ -33,7 +33,7 @@ public class Marriagecert {
         System.out.println("Input 2 for edit block");
         System.out.println("==============================================================================");
         do{
-              System.out.print("What do you want to do? :");
+              System.out.print("What do you want to do ? :");
               num = sc.nextInt();
               sc.nextLine();
    
@@ -84,10 +84,10 @@ public class Marriagecert {
     
     public static Boolean isChainValid(int x,int y) {
 			if (!newchain.get(x).Hash.equals(blockchain.get(y).prevHash) && x != y) {
-				System.out.println("Hashes "+ newchain.get(x).index +" not equal");
+				System.out.println("Hashes Block "+ newchain.get(x).index +" not equal");
 				return false;
 			}else if (!newchain.get(x).Hash.equals(blockchain.get(y).Hash) && x == y){
-                                System.out.println("Hashes "+ newchain.get(x).index +" not equal");
+                                System.out.println("Hashes Block "+ newchain.get(x).index +" not equal");
 				return false;
                         }
 		return true;
@@ -114,20 +114,20 @@ public class Marriagecert {
         
         for (int i = 0; i < blockchain.size(); i++) {
             if( x != 1){
-            if(newchain.get(i).index == x){      
-            newchain.set(i,new Block(i+1,hand,wife,con,blockchain.get(i-1).Hash));
-            }else if(newchain.get(i).index > x){
-            newchain.set(i,new Block(i+1,blockchain.get(i).husband,blockchain.get(i).wife,blockchain.get(i).registrar,newchain.get(i-1).Hash));
-            }
-            else if(newchain.get(i).index < x){
-            newchain.set(i,blockchain.get(i)); 
-            }
-            }else{
-            if(newchain.get(i).index == x){      
-            newchain.set(i,new Block(i+1,hand,wife,con,"0"));
-            }else if(newchain.get(i).index > x){
-            newchain.set(i,new Block(i+1,blockchain.get(i).husband,blockchain.get(i).wife,blockchain.get(i).registrar,newchain.get(i-1).Hash));
-            }
+                if(newchain.get(i).index == x){      
+                    newchain.set(i,new Block(i+1,hand,wife,con,blockchain.get(i-1).Hash));
+                }else if(newchain.get(i).index > x){
+                    newchain.set(i,new Block(i+1,blockchain.get(i).husband,blockchain.get(i).wife,blockchain.get(i).registrar,newchain.get(i-1).Hash));
+                }
+                else if(newchain.get(i).index < x){
+                    newchain.set(i,blockchain.get(i)); 
+                }
+            }else if (x==1){
+                if(newchain.get(i).index == x){      
+                    newchain.set(i,new Block(i+1,hand,wife,con,"0"));
+                }else if(newchain.get(i).index > x){
+                    newchain.set(i,new Block(i+1,blockchain.get(i).husband,blockchain.get(i).wife,blockchain.get(i).registrar,newchain.get(i-1).Hash));
+                }
             }
         }
         
